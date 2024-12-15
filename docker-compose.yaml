@@ -1,0 +1,16 @@
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./ptre-nginx.conf:/etc/nginx/conf.d/ptre.conf
+      # - ./ogame-nginx.conf:/etc/nginx/conf.d/ogame.conf
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
+    external: true
